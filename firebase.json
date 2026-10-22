@@ -1,0 +1,28 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "techwiz-ddede",
+          "appId": "1:471062084218:android:0b026894fb4dacaf0f59c3",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "techwiz-ddede",
+          "configurations": {
+            "android": "1:471062084218:android:0b026894fb4dacaf0f59c3",
+            "ios": "1:471062084218:ios:fb55ad8fa1cd3ccc0f59c3"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "asia-south1",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

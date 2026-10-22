@@ -1,0 +1,644 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isAuth() && request.auth.uid == uid;
+    }
+
+    function userData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function getRole() {
+      return userData().role;
+    }
+
+    function isActiveUser() {
+      return userData().isActive == true;
+    }
+
+    function isCustomer() {
+      return isAuth() && getRole() == 'customer' && isActiveUser();
+    }
+
+    function isFarmer() {
+      return isAuth() && getRole() == 'farmer' && isActiveUser();
+    }
+
+    function isAdmin() {
+      return isAuth() && getRole() == 'admin';
+    }
+
+    function isVerifiedEmail() {
+      return request.auth.token.email_verified == true;
+    }
+
+    function incomingData() {
+      return request.resource.data;
+    }
+
+    function existingData() {
+      return resource.data;
+    }
+
+    function changedKeys() {
+      return incomingData().diff(existingData()).affectedKeys();
+    }
+
+    function optionalString(field, maxLen) {
+      return incomingData().get(field, null) == null
+          || (incomingData().get(field, null) is string
+              && incomingData().get(field, null).size() <= maxLen);
+    }
+
+    function notificationTypeValid(type) {
+      return type in ['restock_alert', 'order_status', 'new_order', 'slot_cancelled', 'booking_modified'];
+    }
+
+    function userKeys() {
+      return ['name', 'email', 'phone', 'address', 'role', 'isActive', 'fcmToken', 'createdAt'];
+    }
+
+    function validUserFields() {
+      return incomingData().name is string
+          && incomingData().name.size() >= 2
+          && incomingData().name.size() <= 60
+          && incomingData().email is string
+          && incomingData().email.size() <= 254
+          && incomingData().email.matches('^[a-z0-9]+([._-][a-z0-9]+)*@[a-z0-9]+([.-][a-z0-9]+)*\\.[a-z]{2,}$')
+          && incomingData().phone is string
+          && (incomingData().phone.matches('^[+][1-9][0-9]{7,14}$')
+              || (resource != null && incomingData().phone == resource.data.phone))
+          && incomingData().address is string
+          && incomingData().address.size() <= 200
+          && optionalString('fcmToken', 300);
+    }
+
+    function validAddress(address) {
+      return address is string
+          && address.size() >= 10
+          && address.size() <= 200
+          && address.matches("^[A-Za-z0-9 ,./#()'-]+$")
+          && address.matches(".*[A-Za-z].*")
+          && address.matches(".*[A-Za-z0-9][ ,]+[A-Za-z0-9].*");
+    }
+
+    function validNewUser() {
+      return incomingData().keys().hasOnly(userKeys())
+          && incomingData().isActive == true
+          && incomingData().createdAt == request.time
+          && validUserFields();
+    }
+
+    function farmerKeys() {
+      return ['userId', 'marketId', 'businessName', 'description', 'rating', 'ratingSum', 'ratingCount',
+              'imageUrl', 'isVerified', 'createdAt', 'lastRatedOrderId'];
+    }
+
+    function validFarmerFields() {
+      return incomingData().keys().hasOnly(farmerKeys())
+          && incomingData().businessName is string
+          && incomingData().businessName.size() >= 2
+          && incomingData().businessName.size() <= 80
+          && incomingData().description is string
+          && incomingData().description.size() <= 500
+          && optionalString('marketId', 60)
+          && optionalString('imageUrl', 500);
+    }
+
+    function productKeys() {
+      return ['farmerId', 'categoryId', 'itemName', 'itemNameLower', 'description', 'pricePerUnit',
+              'unit', 'stockQty', 'imageUrl', 'isAvailable', 'createdAt', 'updatedAt', 'lastRestockOrderId'];
+    }
+
+    function validProductFields() {
+      return incomingData().keys().hasOnly(productKeys())
+          && incomingData().categoryId is string
+          && incomingData().categoryId.size() > 0
+          && incomingData().itemName is string
+          && incomingData().itemName.size() >= 2
+          && incomingData().itemName.size() <= 100
+          && incomingData().description is string
+          && incomingData().description.size() <= 500
+          && incomingData().pricePerUnit is number
+          && incomingData().pricePerUnit > 0
+          && incomingData().unit in ['kg', 'litre', 'dozen', 'piece']
+          && incomingData().stockQty is int
+          && incomingData().stockQty >= 0
+          && incomingData().isAvailable is bool
+          && optionalString('imageUrl', 500);
+    }
+
+    function orderKeys() {
+      return ['customerId', 'customerName', 'farmerId', 'items', 'totalPrice', 'promoCode', 'discount', 'status', 'pickupSlotId',
+              'pickupSlotTime', 'deliveryAddr', 'customerRating', 'createdAt', 'updatedAt'];
+    }
+
+    function itemAt(items, i) {
+      return items.size() <= i
+          || (items[i].keys().hasOnly(['productId', 'itemName', 'qty', 'pricePerUnit', 'subtotal'])
+              && items[i].productId is string
+              && items[i].qty is int
+              && items[i].qty > 0
+              && items[i].qty <= 10000
+              && items[i].subtotal == items[i].qty * items[i].pricePerUnit
+              && get(/databases/$(database)/documents/products/$(items[i].productId)).data.farmerId == incomingData().farmerId
+              && get(/databases/$(database)/documents/products/$(items[i].productId)).data.pricePerUnit == items[i].pricePerUnit
+              && get(/databases/$(database)/documents/products/$(items[i].productId)).data.itemName == items[i].itemName);
+    }
+
+    function subtotalAt(items, i) {
+      return items.size() > i ? items[i].subtotal : 0;
+    }
+
+    function validOrderItems() {
+      let items = incomingData().items;
+      return items is list
+          && items.size() > 0
+          && items.size() <= 7
+          && itemAt(items, 0) && itemAt(items, 1) && itemAt(items, 2) && itemAt(items, 3)
+          && itemAt(items, 4) && itemAt(items, 5) && itemAt(items, 6)
+          && incomingData().totalPrice == subtotalAt(items, 0) + subtotalAt(items, 1) + subtotalAt(items, 2)
+              + subtotalAt(items, 3) + subtotalAt(items, 4) + subtotalAt(items, 5) + subtotalAt(items, 6);
+    }
+
+    function qtyInOrder(items, productId) {
+      return (items.size() > 0 && items[0].productId == productId ? items[0].qty : 0)
+          + (items.size() > 1 && items[1].productId == productId ? items[1].qty : 0)
+          + (items.size() > 2 && items[2].productId == productId ? items[2].qty : 0)
+          + (items.size() > 3 && items[3].productId == productId ? items[3].qty : 0)
+          + (items.size() > 4 && items[4].productId == productId ? items[4].qty : 0)
+          + (items.size() > 5 && items[5].productId == productId ? items[5].qty : 0)
+          + (items.size() > 6 && items[6].productId == productId ? items[6].qty : 0);
+    }
+
+    function promoFor(code) {
+      return get(/databases/$(database)/documents/promo_codes/$(code)).data;
+    }
+
+    function validOrderPromo(orderId) {
+      return (incomingData().get('discount', 0) == 0 && incomingData().get('promoCode', null) == null)
+          || (incomingData().promoCode is string
+              && incomingData().discount is number
+              && incomingData().discount > 0
+              && incomingData().discount <= incomingData().totalPrice
+              && getAfter(/databases/$(database)/documents/promo_redemptions/$(request.auth.uid + '_' + incomingData().promoCode)).data.splits[orderId] == incomingData().discount);
+    }
+
+    function promoKeys() {
+      return ['code', 'type', 'value', 'minOrder', 'maxDiscount', 'active', 'expiresAt', 'createdAt'];
+    }
+
+    function validPromoFields() {
+      return incomingData().keys().hasOnly(promoKeys())
+          && incomingData().code is string
+          && incomingData().code.matches('^[A-Z0-9]{4,15}$')
+          && incomingData().type in ['percent', 'flat']
+          && incomingData().value is number
+          && incomingData().value > 0
+          && (incomingData().type == 'flat' || incomingData().value <= 90)
+          && incomingData().minOrder is number
+          && incomingData().minOrder >= 0
+          && incomingData().maxDiscount is number
+          && incomingData().maxDiscount > 0
+          && (incomingData().type == 'percent' || incomingData().maxDiscount == incomingData().value)
+          && incomingData().active is bool
+          && incomingData().expiresAt is timestamp;
+    }
+
+    function slotKeys() {
+      return ['farmerId', 'slotTime', 'capacity', 'booked', 'isActive'];
+    }
+
+    function validSlotFields() {
+      return incomingData().keys().hasOnly(slotKeys())
+          && incomingData().slotTime is timestamp
+          && incomingData().capacity is int
+          && incomingData().capacity > 0
+          && incomingData().booked is int
+          && incomingData().booked >= 0
+          && incomingData().booked <= incomingData().capacity
+          && incomingData().isActive is bool;
+    }
+
+    function notificationKeys() {
+      return ['userId', 'type', 'message', 'relatedId', 'isRead', 'createdAt'];
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if (isOwner(userId)
+                        && incomingData().role == 'customer'
+                        && incomingData().email == request.auth.token.email
+                        && validAddress(incomingData().address)
+                        && validNewUser())
+                    || (isAdmin()
+                        && incomingData().role == 'farmer'
+                        && validNewUser());
+      allow update: if (isOwner(userId)
+                        && !changedKeys().hasAny(['role', 'isActive', 'email', 'createdAt'])
+                        && incomingData().keys().hasOnly(userKeys())
+                        && (!changedKeys().hasAny(['address']) || validAddress(incomingData().address))
+                        && validUserFields())
+                    || isAdmin();
+      allow delete: if (isOwner(userId) && existingData().role == 'customer')
+                    || isAdmin();
+    }
+
+    match /farmers/{farmerId} {
+      function ratingBackedByOrder(farmerId) {
+        let orderId = incomingData().lastRatedOrderId;
+        let orderPath = /databases/$(database)/documents/orders/$(orderId);
+        let before = get(orderPath).data;
+        let after = getAfter(orderPath).data;
+        let added = incomingData().ratingSum - existingData().get('ratingSum', 0);
+        return orderId is string
+            && orderId != existingData().get('lastRatedOrderId', '')
+            && before.customerId == request.auth.uid
+            && before.farmerId == farmerId
+            && before.status == 'Completed'
+            && before.get('customerRating', null) == null
+            && after.customerRating == added
+            && added >= 1
+            && added <= 5
+            && incomingData().ratingCount == existingData().get('ratingCount', 0) + 1
+            && math.abs(incomingData().rating * incomingData().ratingCount - incomingData().ratingSum) < 0.001;
+      }
+
+      allow read: if isAuth();
+      allow create: if isAdmin()
+                    && incomingData().userId == farmerId
+                    && incomingData().rating <= 0
+                    && incomingData().get('ratingSum', 0) == 0
+                    && incomingData().get('ratingCount', 0) == 0
+                    && incomingData().isVerified == false
+                    && incomingData().createdAt == request.time
+                    && validFarmerFields();
+      allow update: if (isOwner(farmerId)
+                        && !changedKeys().hasAny(['isVerified', 'rating', 'ratingSum', 'ratingCount', 'userId', 'createdAt', 'lastRatedOrderId'])
+                        && validFarmerFields())
+                    || (isCustomer()
+                        && isVerifiedEmail()
+                        && changedKeys().hasOnly(['rating', 'ratingSum', 'ratingCount', 'lastRatedOrderId'])
+                        && ratingBackedByOrder(farmerId))
+                    || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /farmers_markets/{marketId} {
+      function validMarketFields() {
+        return incomingData().keys().hasOnly(['marketName', 'address', 'gpsCoordinates', 'operatingHours', 'activeStatus'])
+            && incomingData().marketName is string
+            && incomingData().marketName.size() >= 2
+            && incomingData().marketName.size() <= 80
+            && incomingData().address is string
+            && incomingData().address.size() >= 5
+            && incomingData().address.size() <= 200
+            && incomingData().operatingHours is string
+            && incomingData().operatingHours.size() <= 80
+            && incomingData().activeStatus is bool
+            && (incomingData().get('gpsCoordinates', null) == null
+                || incomingData().gpsCoordinates is latlng);
+      }
+
+      allow read: if isAuth();
+      allow create, update: if isAdmin() && validMarketFields();
+      allow delete: if isAdmin();
+    }
+
+    match /categories/{categoryId} {
+      allow read: if isAuth();
+      allow write: if isAdmin();
+    }
+
+    match /products/{productId} {
+      function customerTakesStock() {
+        let cartPath = /databases/$(database)/documents/cart_items/$(request.auth.uid + '_' + productId);
+        return incomingData().stockQty < existingData().stockQty
+            && exists(cartPath)
+            && !existsAfter(cartPath)
+            && existingData().stockQty - incomingData().stockQty == get(cartPath).data.quantity;
+      }
+
+      function customerReturnsStock() {
+        let orderId = incomingData().lastRestockOrderId;
+        let orderPath = /databases/$(database)/documents/orders/$(orderId);
+        let before = get(orderPath).data;
+        let after = getAfter(orderPath).data;
+        return orderId is string
+            && before.customerId == request.auth.uid
+            && before.farmerId == existingData().farmerId
+            && before.status in ['Pending', 'Confirmed']
+            && after.status == 'Cancelled'
+            && incomingData().stockQty - existingData().stockQty == qtyInOrder(before.items, productId)
+            && qtyInOrder(before.items, productId) > 0;
+      }
+
+      allow read: if isAdmin()
+                  || isFarmer()
+                  || (isCustomer() && existingData().isAvailable == true);
+      allow create: if isFarmer()
+                    && incomingData().farmerId == request.auth.uid
+                    && incomingData().createdAt == request.time
+                    && incomingData().updatedAt == request.time
+                    && validProductFields();
+      allow update: if (isFarmer()
+                        && existingData().farmerId == request.auth.uid
+                        && incomingData().farmerId == existingData().farmerId
+                        && incomingData().createdAt == existingData().createdAt
+                        && (incomingData().updatedAt == request.time
+                            || changedKeys().hasOnly(['stockQty', 'lastRestockOrderId']))
+                        && validProductFields())
+                    || (isCustomer()
+                        && incomingData().stockQty is int
+                        && incomingData().stockQty >= 0
+                        && ((changedKeys().hasOnly(['stockQty']) && customerTakesStock())
+                            || (changedKeys().hasOnly(['stockQty', 'lastRestockOrderId']) && customerReturnsStock())))
+                    || isAdmin();
+      allow delete: if (isFarmer() && existingData().farmerId == request.auth.uid)
+                    || isAdmin();
+    }
+
+    match /orders/{orderId} {
+      allow read: if (isCustomer() && existingData().customerId == request.auth.uid)
+                  || (isFarmer() && existingData().farmerId == request.auth.uid)
+                  || isAdmin();
+      allow create: if isCustomer()
+                    && isVerifiedEmail()
+                    && incomingData().keys().hasOnly(orderKeys())
+                    && incomingData().customerId == request.auth.uid
+                    && incomingData().customerName == userData().name
+                    && incomingData().farmerId is string
+                    && incomingData().status == 'Pending'
+                    && incomingData().totalPrice is number
+                    && incomingData().totalPrice > 0
+                    && validOrderItems()
+                    && incomingData().deliveryAddr is string
+                    && incomingData().deliveryAddr.size() > 0
+                    && incomingData().deliveryAddr.size() <= 200
+                    && incomingData().customerRating == null
+                    && (incomingData().get('pickupSlotId', null) == null
+                        || get(/databases/$(database)/documents/pickup_slots/$(incomingData().pickupSlotId)).data.farmerId == incomingData().farmerId)
+                    && validOrderPromo(orderId)
+                    && incomingData().createdAt == request.time
+                    && incomingData().updatedAt == request.time;
+      allow update: if (isCustomer()
+                        && existingData().customerId == request.auth.uid
+                        && existingData().status in ['Pending', 'Confirmed']
+                        && incomingData().status == 'Cancelled'
+                        && changedKeys().hasOnly(['status', 'updatedAt'])
+                        && incomingData().updatedAt == request.time)
+                    || (isCustomer()
+                        && existingData().customerId == request.auth.uid
+                        && existingData().status == 'Completed'
+                        && existingData().get('customerRating', null) == null
+                        && changedKeys().hasOnly(['customerRating'])
+                        && incomingData().customerRating is int
+                        && incomingData().customerRating >= 1
+                        && incomingData().customerRating <= 5)
+                    || (isCustomer()
+                        && existingData().customerId == request.auth.uid
+                        && existingData().status in ['Completed', 'Cancelled']
+                        && changedKeys().hasOnly(['deliveryAddr', 'customerName'])
+                        && incomingData().deliveryAddr == 'Account deleted'
+                        && incomingData().get('customerName', '') in ['', 'Deleted customer'])
+                    || (isCustomer()
+                        && existingData().customerId == request.auth.uid
+                        && existingData().status in ['Pending', 'Confirmed']
+                        && changedKeys().hasOnly(['pickupSlotId', 'pickupSlotTime', 'updatedAt'])
+                        && incomingData().updatedAt == request.time
+                        && incomingData().pickupSlotId is string
+                        && get(/databases/$(database)/documents/pickup_slots/$(incomingData().pickupSlotId)).data.farmerId == existingData().farmerId)
+                    || (isFarmer()
+                        && existingData().farmerId == request.auth.uid
+                        && !(existingData().status in ['Completed', 'Cancelled'])
+                        && incomingData().status in ['Confirmed', 'ReadyForPickup', 'Completed', 'Cancelled']
+                        && changedKeys().hasOnly(['status', 'updatedAt'])
+                        && incomingData().updatedAt == request.time)
+                    || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /wishlists/{wishlistId} {
+      allow read: if (isCustomer()
+                      && (resource == null || existingData().customerId == request.auth.uid))
+                  || (isFarmer()
+                      && resource != null
+                      && get(/databases/$(database)/documents/products/$(existingData().productId)).data.farmerId == request.auth.uid)
+                  || isAdmin();
+      allow create: if isCustomer()
+                    && incomingData().keys().hasOnly(['customerId', 'productId', 'addedAt'])
+                    && incomingData().customerId == request.auth.uid
+                    && incomingData().productId is string
+                    && wishlistId == request.auth.uid + '_' + incomingData().productId
+                    && incomingData().addedAt == request.time;
+      allow delete: if (isCustomer() && existingData().customerId == request.auth.uid)
+                    || isAdmin();
+    }
+
+    match /cart_items/{cartItemId} {
+      allow read: if (isCustomer()
+                      && (resource == null || existingData().customerId == request.auth.uid))
+                  || isAdmin();
+      allow create: if isCustomer()
+                    && incomingData().keys().hasOnly(['customerId', 'productId', 'quantity', 'addedAt'])
+                    && incomingData().customerId == request.auth.uid
+                    && incomingData().productId is string
+                    && cartItemId == request.auth.uid + '_' + incomingData().productId
+                    && incomingData().quantity is int
+                    && incomingData().quantity > 0
+                    && incomingData().quantity <= 10000
+                    && incomingData().addedAt == request.time;
+      allow update: if isCustomer()
+                    && existingData().customerId == request.auth.uid
+                    && changedKeys().hasOnly(['quantity'])
+                    && incomingData().quantity is int
+                    && incomingData().quantity > 0
+                    && incomingData().quantity <= 10000;
+      allow delete: if isCustomer() && existingData().customerId == request.auth.uid;
+    }
+
+    match /followed_farmers/{followId} {
+      allow read: if (isCustomer()
+                      && (resource == null || existingData().customerId == request.auth.uid))
+                  || (isFarmer() && resource != null && existingData().farmerId == request.auth.uid)
+                  || isAdmin();
+      allow create: if isCustomer()
+                    && incomingData().keys().hasOnly(['customerId', 'farmerId', 'followedAt'])
+                    && incomingData().customerId == request.auth.uid
+                    && incomingData().farmerId is string
+                    && followId == request.auth.uid + '_' + incomingData().farmerId
+                    && incomingData().followedAt == request.time;
+      allow delete: if (isCustomer() && existingData().customerId == request.auth.uid)
+                    || isAdmin();
+    }
+
+    match /pickup_slots/{slotId} {
+      allow read: if isAuth();
+      allow create: if (isFarmer()
+                        && incomingData().farmerId == request.auth.uid
+                        && incomingData().booked == 0
+                        && validSlotFields())
+                    || isAdmin();
+      allow update: if (isFarmer()
+                        && existingData().farmerId == request.auth.uid
+                        && incomingData().farmerId == existingData().farmerId
+                        && validSlotFields())
+                    || (isCustomer()
+                        && changedKeys().hasOnly(['booked'])
+                        && incomingData().booked is int
+                        && incomingData().booked >= 0
+                        && incomingData().booked <= existingData().capacity
+                        && (incomingData().booked == existingData().booked + 1
+                            || incomingData().booked == existingData().booked - 1))
+                    || isAdmin();
+      allow delete: if (isFarmer() && existingData().farmerId == request.auth.uid)
+                    || isAdmin();
+    }
+
+    match /notifications/{notifId} {
+      function orderOf(orderId) {
+        return get(/databases/$(database)/documents/orders/$(orderId)).data;
+      }
+
+      function productOf(productId) {
+        return get(/databases/$(database)/documents/products/$(productId)).data;
+      }
+
+      function hasLink() {
+        return incomingData().relatedId is string
+            && incomingData().relatedId.size() > 0;
+      }
+
+      function customerToFarmer() {
+        return isCustomer()
+            && isVerifiedEmail()
+            && incomingData().type in ['new_order', 'booking_modified']
+            && hasLink()
+            && orderOf(incomingData().relatedId).customerId == request.auth.uid
+            && orderOf(incomingData().relatedId).farmerId == incomingData().userId
+            && (incomingData().type != 'new_order'
+                || notifId == 'new_order_' + incomingData().relatedId);
+      }
+
+      function customerLowStockAlert() {
+        return isCustomer()
+            && isVerifiedEmail()
+            && incomingData().type == 'restock_alert'
+            && hasLink()
+            && productOf(incomingData().relatedId).farmerId == incomingData().userId
+            && productOf(incomingData().relatedId).stockQty <= 5;
+      }
+
+      function farmerToCustomer() {
+        return isFarmer()
+            && incomingData().type in ['order_status', 'slot_cancelled']
+            && hasLink()
+            && orderOf(incomingData().relatedId).farmerId == request.auth.uid
+            && orderOf(incomingData().relatedId).customerId == incomingData().userId;
+      }
+
+      function farmerRestockAlert() {
+        return isFarmer()
+            && incomingData().type == 'restock_alert'
+            && hasLink()
+            && productOf(incomingData().relatedId).farmerId == request.auth.uid
+            && (incomingData().userId == request.auth.uid
+                || exists(/databases/$(database)/documents/followed_farmers/$(incomingData().userId + '_' + request.auth.uid))
+                || exists(/databases/$(database)/documents/wishlists/$(incomingData().userId + '_' + incomingData().relatedId)));
+      }
+
+      allow read: if isOwner(existingData().userId) || isAdmin();
+      allow create: if isAuth()
+                    && incomingData().keys().hasOnly(notificationKeys())
+                    && incomingData().userId is string
+                    && notificationTypeValid(incomingData().type)
+                    && incomingData().message is string
+                    && incomingData().message.size() > 0
+                    && incomingData().message.size() <= 200
+                    && optionalString('relatedId', 100)
+                    && incomingData().isRead == false
+                    && incomingData().createdAt == request.time
+                    && (isAdmin()
+                        || customerToFarmer()
+                        || customerLowStockAlert()
+                        || farmerToCustomer()
+                        || farmerRestockAlert());
+      allow update: if isOwner(existingData().userId)
+                    && changedKeys().hasOnly(['isRead']);
+      allow delete: if isOwner(existingData().userId) || isAdmin();
+    }
+
+    match /ai_chat_sessions/{sessionId} {
+      allow read, delete: if isAuth() && existingData().userId == request.auth.uid;
+      allow create: if isAuth()
+                    && incomingData().keys().hasOnly(['userId', 'messages', 'createdAt'])
+                    && incomingData().userId == request.auth.uid
+                    && incomingData().messages is list
+                    && incomingData().messages.size() <= 50
+                    && incomingData().createdAt == request.time;
+      allow update: if isAuth()
+                    && existingData().userId == request.auth.uid
+                    && changedKeys().hasOnly(['messages'])
+                    && incomingData().messages.size() <= 50;
+    }
+
+    match /promo_codes/{code} {
+      allow read: if isAuth();
+      allow create: if isAdmin()
+                    && validPromoFields()
+                    && incomingData().code == code
+                    && incomingData().createdAt == request.time;
+      allow update: if isAdmin()
+                    && changedKeys().hasOnly(['active'])
+                    && incomingData().active is bool;
+      allow delete: if isAdmin();
+    }
+
+    match /promo_redemptions/{redemptionId} {
+      allow read: if (isAuth() && redemptionId.split('_')[0] == request.auth.uid) || isAdmin();
+      allow create: if isCustomer()
+                    && isVerifiedEmail()
+                    && incomingData().keys().hasOnly(['customerId', 'code', 'discount', 'splits', 'redeemedAt'])
+                    && incomingData().customerId == request.auth.uid
+                    && incomingData().code is string
+                    && redemptionId == request.auth.uid + '_' + incomingData().code
+                    && promoFor(incomingData().code).active == true
+                    && promoFor(incomingData().code).expiresAt > request.time
+                    && incomingData().discount is number
+                    && incomingData().discount > 0
+                    && incomingData().discount <= promoFor(incomingData().code).maxDiscount
+                    && incomingData().splits is map
+                    && incomingData().splits.size() > 0
+                    && incomingData().splits.size() <= 20
+                    && incomingData().redeemedAt == request.time;
+      allow update: if false;
+      allow delete: if isAdmin();
+    }
+
+    match /reports/{reportId} {
+      allow read: if (isFarmer() && existingData().farmerId == request.auth.uid)
+                  || isAdmin();
+      allow create: if isFarmer()
+                    && incomingData().keys().hasOnly(['farmerId', 'period', 'startDate', 'endDate', 'totalOrders', 'revenue', 'topProducts', 'generatedAt'])
+                    && incomingData().farmerId == request.auth.uid
+                    && incomingData().period in ['daily', 'weekly', 'monthly']
+                    && incomingData().startDate is timestamp
+                    && incomingData().endDate is timestamp
+                    && incomingData().totalOrders is int
+                    && incomingData().totalOrders >= 0
+                    && incomingData().revenue is number
+                    && incomingData().revenue >= 0
+                    && incomingData().topProducts is list
+                    && incomingData().topProducts.size() <= 10
+                    && incomingData().generatedAt == request.time;
+      allow update, delete: if isAdmin();
+    }
+  }
+}
