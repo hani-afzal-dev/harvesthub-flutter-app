@@ -1,0 +1,40 @@
+name: Firestore backup
+
+on:
+  schedule:
+    - cron: '30 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install tools
+        working-directory: tools
+        run: npm install --omit=dev
+      - name: Export Firestore
+        working-directory: tools
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          BACKUP_DIR: ${{ runner.temp }}/backup
+        run: |
+          echo "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
+          SERVICE_ACCOUNT_PATH="$RUNNER_TEMP/sa.json" node backup/backup.js
+      - name: Encrypt backup
+        env:
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          for f in "$RUNNER_TEMP"/backup/*.json; do
+            openssl enc -aes-256-cbc -pbkdf2 -salt -pass env:BACKUP_PASSPHRASE -in "$f" -out "$f.enc"
+            rm "$f"
+          done
+          rm -f "$RUNNER_TEMP/sa.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firestore-backup
+          path: ${{ runner.temp }}/backup/*.enc
+          retention-days: 30
