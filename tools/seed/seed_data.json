@@ -1,0 +1,756 @@
+{
+  "categories": [
+    {
+      "id": "fruits",
+      "name": "Fruits",
+      "description": "Seasonal fruit picked from local orchards."
+    },
+    {
+      "id": "vegetables",
+      "name": "Vegetables",
+      "description": "Fresh vegetables harvested this week."
+    },
+    {
+      "id": "organic",
+      "name": "Organic Products",
+      "description": "Grown without chemical fertilizers or sprays."
+    },
+    {
+      "id": "dairy",
+      "name": "Dairy",
+      "description": "Milk, yogurt, butter and ghee from village dairies."
+    },
+    {
+      "id": "pulses",
+      "name": "Pulses",
+      "description": "Lentils and beans, cleaned and packed by farmers."
+    },
+    {
+      "id": "herbs-spices",
+      "name": "Herbs and Spices",
+      "description": "Fresh herbs and sun-dried spices."
+    },
+    {
+      "id": "grains",
+      "name": "Grains",
+      "description": "Wheat, rice and other whole grains."
+    }
+  ],
+  "markets": [
+    {
+      "id": "latifabad",
+      "marketName": "Latifabad Farmers Market",
+      "address": "Unit 8, Latifabad, Hyderabad, Sindh",
+      "lat": 25.402,
+      "lng": 68.329,
+      "operatingHours": "Sat-Sun 8:00 AM - 2:00 PM"
+    },
+    {
+      "id": "qasimabad",
+      "marketName": "Qasimabad Fresh Bazaar",
+      "address": "Main Road, Qasimabad, Hyderabad, Sindh",
+      "lat": 25.4247,
+      "lng": 68.315,
+      "operatingHours": "Daily 7:00 AM - 12:00 PM"
+    },
+    {
+      "id": "saddar",
+      "marketName": "Saddar Organic Corner",
+      "address": "Saddar Bazaar, Hyderabad, Sindh",
+      "lat": 25.396,
+      "lng": 68.3578,
+      "operatingHours": "Fri-Sun 9:00 AM - 5:00 PM"
+    }
+  ],
+  "accounts": {
+    "admin": {
+      "email": "admin@harvesthub.test",
+      "password": "Admin@Harvest26",
+      "name": "HarvestHub Admin",
+      "phone": "+923331234567",
+      "address": "HarvestHub Office, Hyderabad, Sindh"
+    },
+    "farmers": [
+      {
+        "key": "ali",
+        "email": "ali.raza@harvesthub.test",
+        "password": "Farmer@Harvest26",
+        "name": "Ali Raza",
+        "phone": "+923001110001",
+        "market": "latifabad",
+        "businessName": "Raza Orchards",
+        "description": "Family orchard near Hyderabad. Mangoes, guavas and citrus, picked the morning they are sold.",
+        "verified": true
+      },
+      {
+        "key": "sana",
+        "email": "sana.malik@harvesthub.test",
+        "password": "Farmer@Harvest26",
+        "name": "Sana Malik",
+        "phone": "+923001110002",
+        "market": "qasimabad",
+        "businessName": "Malik Dairy and Pulses",
+        "description": "Small dairy with buffalo milk, desi ghee, and hand-cleaned pulses and grains.",
+        "verified": true
+      },
+      {
+        "key": "imran",
+        "email": "imran.shaikh@harvesthub.test",
+        "password": "Farmer@Harvest26",
+        "name": "Imran Shaikh",
+        "phone": "+923001110003",
+        "market": "saddar",
+        "businessName": "Shaikh Organic Farm",
+        "description": "Organic vegetables and herbs grown without chemical sprays.",
+        "verified": false
+      }
+    ],
+    "customers": [
+      {
+        "key": "ayesha",
+        "email": "ayesha.khan@harvesthub.test",
+        "password": "Customer@Harvest26",
+        "name": "Ayesha Khan",
+        "phone": "+923211230001",
+        "address": "House 12, Block C, Latifabad, Hyderabad"
+      },
+      {
+        "key": "bilal",
+        "email": "bilal.ahmed@harvesthub.test",
+        "password": "Customer@Harvest26",
+        "name": "Bilal Ahmed",
+        "phone": "+923211230002",
+        "address": "Flat 4, Qasimabad Heights, Hyderabad"
+      },
+      {
+        "key": "hamza",
+        "email": "hamza.qureshi@harvesthub.test",
+        "password": "Customer@Harvest26",
+        "name": "Hamza Qureshi",
+        "phone": "+923211230003",
+        "address": "House 5, Street 3, Qasimabad, Hyderabad"
+      },
+      {
+        "key": "sara",
+        "email": "sara.memon@harvesthub.test",
+        "password": "Customer@Harvest26",
+        "name": "Sara Memon",
+        "phone": "+923211230004",
+        "address": "Flat 9, Autobhan Road, Latifabad, Hyderabad"
+      },
+      {
+        "key": "usman",
+        "email": "usman.siddiqui@harvesthub.test",
+        "password": "Customer@Harvest26",
+        "name": "Usman Siddiqui",
+        "phone": "+923211230005",
+        "address": "House 21, Block B, Citizen Colony, Hyderabad"
+      },
+      {
+        "key": "fatima",
+        "email": "fatima.baloch@harvesthub.test",
+        "password": "Customer@Harvest26",
+        "name": "Fatima Baloch",
+        "phone": "+923211230006",
+        "address": "House 7, Saddar Bazaar Road, Hyderabad"
+      }
+    ]
+  },
+  "products": [
+    {
+      "key": "mango",
+      "farmer": "ali",
+      "category": "fruits",
+      "name": "Sindhri Mango",
+      "description": "Sweet, fibre-free Sindhri mangoes. Sold by the kg.",
+      "price": 320,
+      "unit": "kg",
+      "stock": 60
+    },
+    {
+      "key": "guava",
+      "farmer": "ali",
+      "category": "fruits",
+      "name": "Guava",
+      "description": "Firm white guavas, good for chaat or eating fresh.",
+      "price": 140,
+      "unit": "kg",
+      "stock": 40
+    },
+    {
+      "key": "orange",
+      "farmer": "ali",
+      "category": "fruits",
+      "name": "Kinnow Orange",
+      "description": "Juicy kinnow with thin skin.",
+      "price": 180,
+      "unit": "dozen",
+      "stock": 3
+    },
+    {
+      "key": "banana",
+      "farmer": "ali",
+      "category": "fruits",
+      "name": "Banana",
+      "description": "Local bananas, sold by the dozen.",
+      "price": 150,
+      "unit": "dozen",
+      "stock": 0
+    },
+    {
+      "key": "mint",
+      "farmer": "ali",
+      "category": "herbs-spices",
+      "name": "Fresh Mint",
+      "description": "Fresh pudina bunches, cut the same morning.",
+      "price": 40,
+      "unit": "piece",
+      "stock": 50
+    },
+    {
+      "key": "milk",
+      "farmer": "sana",
+      "category": "dairy",
+      "name": "Buffalo Milk",
+      "description": "Fresh buffalo milk, not boiled or diluted.",
+      "price": 190,
+      "unit": "litre",
+      "stock": 35
+    },
+    {
+      "key": "ghee",
+      "farmer": "sana",
+      "category": "dairy",
+      "name": "Desi Ghee",
+      "description": "Slow-cooked ghee from buffalo cream.",
+      "price": 2200,
+      "unit": "kg",
+      "stock": 12
+    },
+    {
+      "key": "yogurt",
+      "farmer": "sana",
+      "category": "dairy",
+      "name": "Set Yogurt",
+      "description": "Thick set yogurt made every morning.",
+      "price": 220,
+      "unit": "kg",
+      "stock": 20
+    },
+    {
+      "key": "masoor",
+      "farmer": "sana",
+      "category": "pulses",
+      "name": "Masoor Dal",
+      "description": "Cleaned red lentils, stone-free.",
+      "price": 260,
+      "unit": "kg",
+      "stock": 45
+    },
+    {
+      "key": "chana",
+      "farmer": "sana",
+      "category": "pulses",
+      "name": "Chana Dal",
+      "description": "Split chickpeas, sun dried.",
+      "price": 240,
+      "unit": "kg",
+      "stock": 4
+    },
+    {
+      "key": "wheat",
+      "farmer": "sana",
+      "category": "grains",
+      "name": "Whole Wheat",
+      "description": "Stone-milling grade wheat from this season.",
+      "price": 110,
+      "unit": "kg",
+      "stock": 200
+    },
+    {
+      "key": "rice",
+      "farmer": "sana",
+      "category": "grains",
+      "name": "Basmati Rice",
+      "description": "Aged basmati, long grain.",
+      "price": 340,
+      "unit": "kg",
+      "stock": 80
+    },
+    {
+      "key": "tomato",
+      "farmer": "imran",
+      "category": "vegetables",
+      "name": "Tomato",
+      "description": "Ripe red tomatoes for cooking.",
+      "price": 90,
+      "unit": "kg",
+      "stock": 70
+    },
+    {
+      "key": "spinach",
+      "farmer": "imran",
+      "category": "vegetables",
+      "name": "Spinach",
+      "description": "Tender palak, washed and bundled.",
+      "price": 60,
+      "unit": "piece",
+      "stock": 30
+    },
+    {
+      "key": "okra",
+      "farmer": "imran",
+      "category": "vegetables",
+      "name": "Okra",
+      "description": "Small, tender bhindi.",
+      "price": 160,
+      "unit": "kg",
+      "stock": 25
+    },
+    {
+      "key": "carrot",
+      "farmer": "imran",
+      "category": "organic",
+      "name": "Organic Carrot",
+      "description": "Organic carrots, sweet and crunchy.",
+      "price": 130,
+      "unit": "kg",
+      "stock": 40
+    },
+    {
+      "key": "turmeric",
+      "farmer": "imran",
+      "category": "herbs-spices",
+      "name": "Turmeric Powder",
+      "description": "Ground from farm-dried turmeric roots.",
+      "price": 700,
+      "unit": "kg",
+      "stock": 15
+    },
+    {
+      "key": "coriander",
+      "farmer": "imran",
+      "category": "herbs-spices",
+      "name": "Fresh Coriander",
+      "description": "Green dhania bunches.",
+      "price": 30,
+      "unit": "piece",
+      "stock": 60
+    },
+    {
+      "key": "honey",
+      "farmer": "imran",
+      "category": "organic",
+      "name": "Organic Honey",
+      "description": "Raw sidr honey from hives next to our organic fields.",
+      "price": 1400,
+      "unit": "kg",
+      "stock": 18
+    },
+    {
+      "key": "brownrice",
+      "farmer": "imran",
+      "category": "organic",
+      "name": "Organic Brown Rice",
+      "description": "Unpolished brown rice grown without chemical sprays.",
+      "price": 420,
+      "unit": "kg",
+      "stock": 40
+    },
+    {
+      "key": "gur",
+      "farmer": "imran",
+      "category": "organic",
+      "name": "Organic Jaggery (Gur)",
+      "description": "Made from our own sugarcane, no added colour.",
+      "price": 280,
+      "unit": "kg",
+      "stock": 30
+    },
+    {
+      "key": "moong",
+      "farmer": "sana",
+      "category": "pulses",
+      "name": "Moong Dal",
+      "description": "Split yellow moong, cleaned and sorted by hand.",
+      "price": 280,
+      "unit": "kg",
+      "stock": 50
+    },
+    {
+      "key": "mash",
+      "farmer": "sana",
+      "category": "pulses",
+      "name": "Mash Dal",
+      "description": "White urad dal for daal makhani and haleem.",
+      "price": 360,
+      "unit": "kg",
+      "stock": 35
+    },
+    {
+      "key": "sella",
+      "farmer": "sana",
+      "category": "grains",
+      "name": "Sella Rice",
+      "description": "Parboiled long grain rice that stays separate after cooking.",
+      "price": 300,
+      "unit": "kg",
+      "stock": 90
+    },
+    {
+      "key": "bajra",
+      "farmer": "imran",
+      "category": "grains",
+      "name": "Millet (Bajra)",
+      "description": "Whole pearl millet for rotis and khichdi.",
+      "price": 150,
+      "unit": "kg",
+      "stock": 60
+    },
+    {
+      "key": "potato",
+      "farmer": "imran",
+      "category": "vegetables",
+      "name": "Potato",
+      "description": "Fresh potatoes, good for curries and fries.",
+      "price": 70,
+      "unit": "kg",
+      "stock": 120
+    },
+    {
+      "key": "onion",
+      "farmer": "imran",
+      "category": "vegetables",
+      "name": "Onion",
+      "description": "Red onions, dried and sorted.",
+      "price": 90,
+      "unit": "kg",
+      "stock": 100
+    },
+    {
+      "key": "pomegranate",
+      "farmer": "ali",
+      "category": "fruits",
+      "name": "Pomegranate",
+      "description": "Sweet Kandhari pomegranates with deep red seeds.",
+      "price": 380,
+      "unit": "kg",
+      "stock": 25
+    }
+  ],
+  "orders": [
+    {
+      "key": "o1",
+      "customer": "ayesha",
+      "farmer": "ali",
+      "daysAgo": 26,
+      "status": "Completed",
+      "rating": 5,
+      "items": [
+        [
+          "mango",
+          3
+        ],
+        [
+          "guava",
+          2
+        ]
+      ]
+    },
+    {
+      "key": "o2",
+      "customer": "bilal",
+      "farmer": "ali",
+      "daysAgo": 19,
+      "status": "Completed",
+      "rating": 4,
+      "items": [
+        [
+          "mango",
+          2
+        ]
+      ]
+    },
+    {
+      "key": "o3",
+      "customer": "ayesha",
+      "farmer": "sana",
+      "daysAgo": 12,
+      "status": "Completed",
+      "rating": 5,
+      "items": [
+        [
+          "milk",
+          4
+        ],
+        [
+          "yogurt",
+          1
+        ]
+      ]
+    },
+    {
+      "key": "o4",
+      "customer": "bilal",
+      "farmer": "sana",
+      "daysAgo": 8,
+      "status": "Completed",
+      "rating": null,
+      "items": [
+        [
+          "masoor",
+          2
+        ],
+        [
+          "rice",
+          2
+        ]
+      ]
+    },
+    {
+      "key": "o5",
+      "customer": "ayesha",
+      "farmer": "imran",
+      "daysAgo": 5,
+      "status": "Cancelled",
+      "rating": null,
+      "items": [
+        [
+          "tomato",
+          3
+        ]
+      ]
+    },
+    {
+      "key": "o6",
+      "customer": "bilal",
+      "farmer": "imran",
+      "daysAgo": 2,
+      "status": "Completed",
+      "rating": 4,
+      "items": [
+        [
+          "carrot",
+          2
+        ],
+        [
+          "spinach",
+          2
+        ]
+      ]
+    },
+    {
+      "key": "o7",
+      "customer": "ayesha",
+      "farmer": "ali",
+      "daysAgo": 0,
+      "status": "Pending",
+      "rating": null,
+      "slot": [
+        "ali",
+        1,
+        0
+      ],
+      "items": [
+        [
+          "guava",
+          2
+        ],
+        [
+          "mint",
+          3
+        ]
+      ]
+    },
+    {
+      "key": "o8",
+      "customer": "bilal",
+      "farmer": "sana",
+      "daysAgo": 0,
+      "status": "Confirmed",
+      "rating": null,
+      "slot": [
+        "sana",
+        1,
+        1
+      ],
+      "items": [
+        [
+          "ghee",
+          1
+        ],
+        [
+          "milk",
+          2
+        ]
+      ]
+    },
+    {
+      "key": "o9",
+      "customer": "hamza",
+      "farmer": "imran",
+      "daysAgo": 9,
+      "status": "Completed",
+      "rating": 5,
+      "items": [
+        [
+          "honey",
+          1
+        ],
+        [
+          "potato",
+          5
+        ]
+      ]
+    },
+    {
+      "key": "o10",
+      "customer": "sara",
+      "farmer": "ali",
+      "daysAgo": 6,
+      "status": "Completed",
+      "rating": 4,
+      "items": [
+        [
+          "pomegranate",
+          2
+        ],
+        [
+          "guava",
+          1
+        ]
+      ]
+    },
+    {
+      "key": "o11",
+      "customer": "usman",
+      "farmer": "sana",
+      "daysAgo": 0,
+      "status": "Pending",
+      "rating": null,
+      "slot": [
+        "sana",
+        2,
+        0
+      ],
+      "items": [
+        [
+          "moong",
+          2
+        ],
+        [
+          "sella",
+          5
+        ]
+      ]
+    },
+    {
+      "key": "o12",
+      "customer": "fatima",
+      "farmer": "imran",
+      "daysAgo": 1,
+      "status": "Confirmed",
+      "rating": null,
+      "slot": [
+        "imran",
+        1,
+        1
+      ],
+      "items": [
+        [
+          "brownrice",
+          3
+        ],
+        [
+          "onion",
+          4
+        ],
+        [
+          "gur",
+          1
+        ]
+      ]
+    }
+  ],
+  "follows": [
+    [
+      "ayesha",
+      "ali"
+    ],
+    [
+      "ayesha",
+      "sana"
+    ],
+    [
+      "bilal",
+      "imran"
+    ],
+    [
+      "hamza",
+      "imran"
+    ],
+    [
+      "sara",
+      "ali"
+    ],
+    [
+      "fatima",
+      "imran"
+    ]
+  ],
+  "wishlists": [
+    [
+      "ayesha",
+      "banana"
+    ],
+    [
+      "ayesha",
+      "chana"
+    ],
+    [
+      "bilal",
+      "orange"
+    ],
+    [
+      "hamza",
+      "bajra"
+    ],
+    [
+      "sara",
+      "pomegranate"
+    ],
+    [
+      "usman",
+      "mash"
+    ]
+  ],
+  "promoCodes": [
+    {
+      "code": "FRESH20",
+      "type": "percent",
+      "value": 20,
+      "minOrder": 200,
+      "maxDiscount": 50,
+      "active": true,
+      "daysValid": 60
+    },
+    {
+      "code": "FARM100",
+      "type": "flat",
+      "value": 100,
+      "minOrder": 1000,
+      "maxDiscount": 100,
+      "active": true,
+      "daysValid": 30
+    },
+    {
+      "code": "EID25",
+      "type": "percent",
+      "value": 25,
+      "minOrder": 500,
+      "maxDiscount": 150,
+      "active": false,
+      "daysValid": 10
+    }
+  ]
+}

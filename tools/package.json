@@ -1,0 +1,25 @@
+{
+  "name": "harvesthub-tools",
+  "private": true,
+  "description": "Seed and backup scripts for HarvestHub (run on a PC, not inside the app)",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "seed": "node seed/seed.js",
+    "seed:dry": "node seed/seed.js --dry-run",
+    "backup": "node backup/backup.js",
+    "restore": "node backup/restore.js",
+    "images": "node images/upload_images.js",
+    "images:dry": "node images/upload_images.js --dry-run",
+    "images:cleanup": "node images/cleanup_images.js",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-harvesthub --config ../firebase.json \"node rules/rules.test.mjs\""
+  },
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^4.0.1",
+    "firebase": "^11.10.0"
+  }
+}
