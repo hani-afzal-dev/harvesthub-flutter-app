@@ -13,7 +13,7 @@
 ## 👨‍💻 Project Overview & Creator
 
 - **Project**: **HarvestHub 🌱🛒**
-- **Created & Developed By**: **Hani Afzal** *(Solo Developer)*
+- **Created & Developed By**: **Hani Afzal**
 - **Domain / Track**: **Agriculture (AgriTech, AI & Food Security)**
 
 ---
