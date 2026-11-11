@@ -10,16 +10,11 @@
 
 ---
 
-## 🏆 Hackathon Submission Details
+## 👨‍💻 Project Overview & Creator
 
-- **Event**: **Dennings University Hackathon 2026–2027**
-- **Category / Format**: **5-Hour Hackathon Challenge**
-- **Niche / Track**: **Agriculture (AgriTech & Food Security)**
-- **Team Name**: **Code Forge**
-- **Team Members**:
-  - **Hani Afzal**
-  - **Rida Rahima**
-  - **Ummema Abdul Hayee**
+- **Project**: **HarvestHub 🌱🛒**
+- **Created & Developed By**: **Hani Afzal** *(Solo Developer)*
+- **Domain / Track**: **Agriculture (AgriTech, AI & Food Security)**
 
 ---
 
@@ -52,8 +47,7 @@ Agriculture is the backbone of developing economies like Pakistan, contributing 
 
 ## 🤖 3 Core AI Features (Built for Agriculture)
 
-Under strict hackathon constraints,
-**Code Forge** built and integrated three purpose-driven AI systems using Google's **Gemini Developer API** with zero-cloud-storage image handling and custom offline Dart engines.
+**HarvestHub** integrates three purpose-driven AI systems designed and developed by **Hani Afzal** using Google's **Gemini Developer API** with zero-cloud-storage image handling and custom offline Dart engines.
 
 ```mermaid
 flowchart TD
@@ -277,18 +271,14 @@ flutter analyze
 
 ---
 
-## 👥 Pre-Seeded Test Accounts (For Hackathon Judges)
+## 👥 Pre-Seeded Test Accounts
 
-The platform includes freshly seeded and verified test accounts ready for instant evaluation without email confirmation hurdles:
+The platform includes pre-seeded and verified test accounts ready for instant evaluation without email confirmation hurdles:
 
 | Role | Name & Business | Email | Password | Purpose |
 |---|---|---|---|---|
 | **Customer** | **Hani Afzal** | `hani.afzal@harvesthub.test` | `Customer@Harvest26` | Test "Smart Basket", Cart, Fresh Orders & Notifications |
-| **Customer** | **Rida Rahima** | `rida.rahima@harvesthub.test` | `Customer@Harvest26` | Test Budget Optimization, Follow Farmers & Checkout |
-| **Customer** | **Ummema Abdul Hayee** | `ummema.hayee@harvesthub.test` | `Customer@Harvest26` | Test Direct Ordering & Order Pickup Tracking |
-| **Farmer** | **Hani Afzal** (*Afzal Green Orchards*) | `hani.farmer@harvesthub.test` | `Farmer@Harvest26` | Test "Awaaz se Dukaan" Voice Listing & "Crop Doctor" |
-| **Farmer** | **Rida Rahima** (*Rahima Dairy & Pulses*) | `rida.farmer@harvesthub.test` | `Farmer@Harvest26` | Test Dairy Inventory & Farmer Orders Management |
-| **Farmer** | **Ummema Abdul Hayee** (*Hayee Organic Harvest*) | `ummema.farmer@harvesthub.test` | `Farmer@Harvest26` | Test Organic Produce Catalog & Crop Doctor |
+| **Farmer** | **Hani Afzal** (*Afzal Green Orchards*) | `hani.farmer@harvesthub.test` | `Farmer@Harvest26` | Test "Awaaz se Dukaan" Voice Listing, Inventory & "Crop Doctor" |
 | **Admin** | **Hani Afzal (Admin)** | `admin@harvesthub.test` | `Admin@Harvest26` | Platform Overview, Manage Farmers & Promo Codes |
 
 *Note: For Google Sign-In, `haniafzal96@gmail.com` is also pre-configured as an active customer account with live notifications and order history.*
@@ -305,12 +295,9 @@ HarvestHub directly aligns with the **United Nations Sustainable Development Goa
 
 ---
 
-## 👩‍💻 Developed with ❤️ by Team Code Forge
-*Dennings University Hackathon 2026–2027*
+## 👨‍💻 Project Author
 
-- **Hani Afzal**
-- **Rida Rahima**
-- **Ummema Abdul Hayee**
+**HarvestHub is designed, architected, and built with ❤️ by Hani Afzal.**
 
 ---
 

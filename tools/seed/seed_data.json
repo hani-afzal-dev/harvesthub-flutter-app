@@ -66,100 +66,38 @@
     "admin": {
       "email": "admin@harvesthub.test",
       "password": "Admin@Harvest26",
-      "name": "HarvestHub Admin",
+      "name": "Hani Afzal (Admin)",
       "phone": "+923331234567",
-      "address": "HarvestHub Office, Hyderabad, Sindh"
+      "address": "HarvestHub Headquarters, Latifabad, Hyderabad"
     },
     "farmers": [
       {
-        "key": "ali",
-        "email": "ali.raza@harvesthub.test",
+        "key": "afzal_farm",
+        "email": "hani.farmer@harvesthub.test",
         "password": "Farmer@Harvest26",
-        "name": "Ali Raza",
-        "phone": "+923001110001",
+        "name": "Hani Afzal",
+        "phone": "+923001112221",
         "market": "latifabad",
-        "businessName": "Raza Orchards",
-        "description": "Family orchard near Hyderabad. Mangoes, guavas and citrus, picked the morning they are sold.",
+        "businessName": "Afzal Green Orchards",
+        "description": "Family orchard and organic farm owned by Hani Afzal. Fresh vegetables, mangoes, pure dairy, and farm produce.",
         "verified": true
-      },
-      {
-        "key": "sana",
-        "email": "sana.malik@harvesthub.test",
-        "password": "Farmer@Harvest26",
-        "name": "Sana Malik",
-        "phone": "+923001110002",
-        "market": "qasimabad",
-        "businessName": "Malik Dairy and Pulses",
-        "description": "Small dairy with buffalo milk, desi ghee, and hand-cleaned pulses and grains.",
-        "verified": true
-      },
-      {
-        "key": "imran",
-        "email": "imran.shaikh@harvesthub.test",
-        "password": "Farmer@Harvest26",
-        "name": "Imran Shaikh",
-        "phone": "+923001110003",
-        "market": "saddar",
-        "businessName": "Shaikh Organic Farm",
-        "description": "Organic vegetables and herbs grown without chemical sprays.",
-        "verified": false
       }
     ],
     "customers": [
       {
-        "key": "ayesha",
-        "email": "ayesha.khan@harvesthub.test",
+        "key": "hani",
+        "email": "hani.afzal@harvesthub.test",
         "password": "Customer@Harvest26",
-        "name": "Ayesha Khan",
-        "phone": "+923211230001",
-        "address": "House 12, Block C, Latifabad, Hyderabad"
-      },
-      {
-        "key": "bilal",
-        "email": "bilal.ahmed@harvesthub.test",
-        "password": "Customer@Harvest26",
-        "name": "Bilal Ahmed",
-        "phone": "+923211230002",
-        "address": "Flat 4, Qasimabad Heights, Hyderabad"
-      },
-      {
-        "key": "hamza",
-        "email": "hamza.qureshi@harvesthub.test",
-        "password": "Customer@Harvest26",
-        "name": "Hamza Qureshi",
-        "phone": "+923211230003",
-        "address": "House 5, Street 3, Qasimabad, Hyderabad"
-      },
-      {
-        "key": "sara",
-        "email": "sara.memon@harvesthub.test",
-        "password": "Customer@Harvest26",
-        "name": "Sara Memon",
-        "phone": "+923211230004",
-        "address": "Flat 9, Autobhan Road, Latifabad, Hyderabad"
-      },
-      {
-        "key": "usman",
-        "email": "usman.siddiqui@harvesthub.test",
-        "password": "Customer@Harvest26",
-        "name": "Usman Siddiqui",
-        "phone": "+923211230005",
-        "address": "House 21, Block B, Citizen Colony, Hyderabad"
-      },
-      {
-        "key": "fatima",
-        "email": "fatima.baloch@harvesthub.test",
-        "password": "Customer@Harvest26",
-        "name": "Fatima Baloch",
-        "phone": "+923211230006",
-        "address": "House 7, Saddar Bazaar Road, Hyderabad"
+        "name": "Hani Afzal",
+        "phone": "+923211234567",
+        "address": "House 45, Street 12, Gulshan-e-Iqbal, Hyderabad"
       }
     ]
   },
   "products": [
     {
       "key": "mango",
-      "farmer": "ali",
+      "farmer": "afzal_farm",
       "category": "fruits",
       "name": "Sindhri Mango",
       "description": "Sweet, fibre-free Sindhri mangoes. Sold by the kg.",
@@ -169,7 +107,7 @@
     },
     {
       "key": "guava",
-      "farmer": "ali",
+      "farmer": "afzal_farm",
       "category": "fruits",
       "name": "Guava",
       "description": "Firm white guavas, good for chaat or eating fresh.",
@@ -179,7 +117,7 @@
     },
     {
       "key": "orange",
-      "farmer": "ali",
+      "farmer": "afzal_farm",
       "category": "fruits",
       "name": "Kinnow Orange",
       "description": "Juicy kinnow with thin skin.",
@@ -189,7 +127,7 @@
     },
     {
       "key": "banana",
-      "farmer": "ali",
+      "farmer": "afzal_farm",
       "category": "fruits",
       "name": "Banana",
       "description": "Local bananas, sold by the dozen.",
@@ -199,7 +137,7 @@
     },
     {
       "key": "mint",
-      "farmer": "ali",
+      "farmer": "afzal_farm",
       "category": "herbs-spices",
       "name": "Fresh Mint",
       "description": "Fresh pudina bunches, cut the same morning.",
@@ -209,7 +147,7 @@
     },
     {
       "key": "milk",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "dairy",
       "name": "Buffalo Milk",
       "description": "Fresh buffalo milk, not boiled or diluted.",
@@ -219,7 +157,7 @@
     },
     {
       "key": "ghee",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "dairy",
       "name": "Desi Ghee",
       "description": "Slow-cooked ghee from buffalo cream.",
@@ -229,7 +167,7 @@
     },
     {
       "key": "yogurt",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "dairy",
       "name": "Set Yogurt",
       "description": "Thick set yogurt made every morning.",
@@ -239,7 +177,7 @@
     },
     {
       "key": "masoor",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "pulses",
       "name": "Masoor Dal",
       "description": "Cleaned red lentils, stone-free.",
@@ -249,7 +187,7 @@
     },
     {
       "key": "chana",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "pulses",
       "name": "Chana Dal",
       "description": "Split chickpeas, sun dried.",
@@ -259,7 +197,7 @@
     },
     {
       "key": "wheat",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "grains",
       "name": "Whole Wheat",
       "description": "Stone-milling grade wheat from this season.",
@@ -269,7 +207,7 @@
     },
     {
       "key": "rice",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "grains",
       "name": "Basmati Rice",
       "description": "Aged basmati, long grain.",
@@ -279,7 +217,7 @@
     },
     {
       "key": "tomato",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "vegetables",
       "name": "Tomato",
       "description": "Ripe red tomatoes for cooking.",
@@ -289,7 +227,7 @@
     },
     {
       "key": "spinach",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "vegetables",
       "name": "Spinach",
       "description": "Tender palak, washed and bundled.",
@@ -299,7 +237,7 @@
     },
     {
       "key": "okra",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "vegetables",
       "name": "Okra",
       "description": "Small, tender bhindi.",
@@ -309,7 +247,7 @@
     },
     {
       "key": "carrot",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "organic",
       "name": "Organic Carrot",
       "description": "Organic carrots, sweet and crunchy.",
@@ -319,7 +257,7 @@
     },
     {
       "key": "turmeric",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "herbs-spices",
       "name": "Turmeric Powder",
       "description": "Ground from farm-dried turmeric roots.",
@@ -329,7 +267,7 @@
     },
     {
       "key": "coriander",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "herbs-spices",
       "name": "Fresh Coriander",
       "description": "Green dhania bunches.",
@@ -339,7 +277,7 @@
     },
     {
       "key": "honey",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "organic",
       "name": "Organic Honey",
       "description": "Raw sidr honey from hives next to our organic fields.",
@@ -349,7 +287,7 @@
     },
     {
       "key": "brownrice",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "organic",
       "name": "Organic Brown Rice",
       "description": "Unpolished brown rice grown without chemical sprays.",
@@ -359,7 +297,7 @@
     },
     {
       "key": "gur",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "organic",
       "name": "Organic Jaggery (Gur)",
       "description": "Made from our own sugarcane, no added colour.",
@@ -369,7 +307,7 @@
     },
     {
       "key": "moong",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "pulses",
       "name": "Moong Dal",
       "description": "Split yellow moong, cleaned and sorted by hand.",
@@ -379,7 +317,7 @@
     },
     {
       "key": "mash",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "pulses",
       "name": "Mash Dal",
       "description": "White urad dal for daal makhani and haleem.",
@@ -389,7 +327,7 @@
     },
     {
       "key": "sella",
-      "farmer": "sana",
+      "farmer": "afzal_farm",
       "category": "grains",
       "name": "Sella Rice",
       "description": "Parboiled long grain rice that stays separate after cooking.",
@@ -399,7 +337,7 @@
     },
     {
       "key": "bajra",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "grains",
       "name": "Millet (Bajra)",
       "description": "Whole pearl millet for rotis and khichdi.",
@@ -409,7 +347,7 @@
     },
     {
       "key": "potato",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "vegetables",
       "name": "Potato",
       "description": "Fresh potatoes, good for curries and fries.",
@@ -419,7 +357,7 @@
     },
     {
       "key": "onion",
-      "farmer": "imran",
+      "farmer": "afzal_farm",
       "category": "vegetables",
       "name": "Onion",
       "description": "Red onions, dried and sorted.",
@@ -429,7 +367,7 @@
     },
     {
       "key": "pomegranate",
-      "farmer": "ali",
+      "farmer": "afzal_farm",
       "category": "fruits",
       "name": "Pomegranate",
       "description": "Sweet Kandhari pomegranates with deep red seeds.",
@@ -441,9 +379,9 @@
   "orders": [
     {
       "key": "o1",
-      "customer": "ayesha",
-      "farmer": "ali",
-      "daysAgo": 26,
+      "customer": "hani",
+      "farmer": "afzal_farm",
+      "daysAgo": 5,
       "status": "Completed",
       "rating": 5,
       "items": [
@@ -459,23 +397,9 @@
     },
     {
       "key": "o2",
-      "customer": "bilal",
-      "farmer": "ali",
-      "daysAgo": 19,
-      "status": "Completed",
-      "rating": 4,
-      "items": [
-        [
-          "mango",
-          2
-        ]
-      ]
-    },
-    {
-      "key": "o3",
-      "customer": "ayesha",
-      "farmer": "sana",
-      "daysAgo": 12,
+      "customer": "hani",
+      "farmer": "afzal_farm",
+      "daysAgo": 2,
       "status": "Completed",
       "rating": 5,
       "items": [
@@ -490,238 +414,42 @@
       ]
     },
     {
-      "key": "o4",
-      "customer": "bilal",
-      "farmer": "sana",
-      "daysAgo": 8,
-      "status": "Completed",
-      "rating": null,
-      "items": [
-        [
-          "masoor",
-          2
-        ],
-        [
-          "rice",
-          2
-        ]
-      ]
-    },
-    {
-      "key": "o5",
-      "customer": "ayesha",
-      "farmer": "imran",
-      "daysAgo": 5,
-      "status": "Cancelled",
+      "key": "o3",
+      "customer": "hani",
+      "farmer": "afzal_farm",
+      "daysAgo": 0,
+      "status": "Confirmed",
       "rating": null,
       "items": [
         [
           "tomato",
           3
-        ]
-      ]
-    },
-    {
-      "key": "o6",
-      "customer": "bilal",
-      "farmer": "imran",
-      "daysAgo": 2,
-      "status": "Completed",
-      "rating": 4,
-      "items": [
+        ],
         [
-          "carrot",
+          "banana",
           2
-        ],
-        [
-          "spinach",
-          2
-        ]
-      ]
-    },
-    {
-      "key": "o7",
-      "customer": "ayesha",
-      "farmer": "ali",
-      "daysAgo": 0,
-      "status": "Pending",
-      "rating": null,
-      "slot": [
-        "ali",
-        1,
-        0
-      ],
-      "items": [
-        [
-          "guava",
-          2
-        ],
-        [
-          "mint",
-          3
-        ]
-      ]
-    },
-    {
-      "key": "o8",
-      "customer": "bilal",
-      "farmer": "sana",
-      "daysAgo": 0,
-      "status": "Confirmed",
-      "rating": null,
-      "slot": [
-        "sana",
-        1,
-        1
-      ],
-      "items": [
-        [
-          "ghee",
-          1
-        ],
-        [
-          "milk",
-          2
-        ]
-      ]
-    },
-    {
-      "key": "o9",
-      "customer": "hamza",
-      "farmer": "imran",
-      "daysAgo": 9,
-      "status": "Completed",
-      "rating": 5,
-      "items": [
-        [
-          "honey",
-          1
-        ],
-        [
-          "potato",
-          5
-        ]
-      ]
-    },
-    {
-      "key": "o10",
-      "customer": "sara",
-      "farmer": "ali",
-      "daysAgo": 6,
-      "status": "Completed",
-      "rating": 4,
-      "items": [
-        [
-          "pomegranate",
-          2
-        ],
-        [
-          "guava",
-          1
-        ]
-      ]
-    },
-    {
-      "key": "o11",
-      "customer": "usman",
-      "farmer": "sana",
-      "daysAgo": 0,
-      "status": "Pending",
-      "rating": null,
-      "slot": [
-        "sana",
-        2,
-        0
-      ],
-      "items": [
-        [
-          "moong",
-          2
-        ],
-        [
-          "sella",
-          5
-        ]
-      ]
-    },
-    {
-      "key": "o12",
-      "customer": "fatima",
-      "farmer": "imran",
-      "daysAgo": 1,
-      "status": "Confirmed",
-      "rating": null,
-      "slot": [
-        "imran",
-        1,
-        1
-      ],
-      "items": [
-        [
-          "brownrice",
-          3
-        ],
-        [
-          "onion",
-          4
-        ],
-        [
-          "gur",
-          1
         ]
       ]
     }
   ],
   "follows": [
     [
-      "ayesha",
-      "ali"
-    ],
-    [
-      "ayesha",
-      "sana"
-    ],
-    [
-      "bilal",
-      "imran"
-    ],
-    [
-      "hamza",
-      "imran"
-    ],
-    [
-      "sara",
-      "ali"
-    ],
-    [
-      "fatima",
-      "imran"
+      "hani",
+      "afzal_farm"
     ]
   ],
   "wishlists": [
     [
-      "ayesha",
-      "banana"
+      "hani",
+      "mango"
     ],
     [
-      "ayesha",
-      "chana"
+      "hani",
+      "tomato"
     ],
     [
-      "bilal",
-      "orange"
-    ],
-    [
-      "hamza",
-      "bajra"
-    ],
-    [
-      "sara",
-      "pomegranate"
-    ],
-    [
-      "usman",
-      "mash"
+      "hani",
+      "milk"
     ]
   ],
   "promoCodes": [
