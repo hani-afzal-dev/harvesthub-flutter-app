@@ -1,37 +1,18 @@
-<div align="center">
+<img src="assets/images/app_logo_rounded.png" width="84" height="84" align="right" alt="HarvestHub App Icon" />
 
-  <img src="assets/images/logo.png" alt="HarvestHub Logo" width="160" />
+# HarvestHub 🌱🛒
+### *Direct Farm-to-Table Marketplace with On-Device & Cloud AI*
 
-  # HarvestHub 🌱🛒
-  ### *Direct Farm-to-Table Marketplace with On-Device & Cloud AI*
+Empowering smallholder farmers with voice AI &bull; Protecting household grocery budgets against inflation.
 
-  **Empowering smallholder farmers with voice AI & protecting family grocery budgets against inflation.**
-
-  <br/>
-
-  [![Flutter](https://img.shields.io/badge/Flutter-3.24+-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
-  [![Dart](https://img.shields.io/badge/Dart-3.6+-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
-  [![Firebase](https://img.shields.io/badge/Firebase-Spark_Plan-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
-  [![Google Gemini](https://img.shields.io/badge/Google_Gemini-Flash_AI-8E75C2?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev)
-  [![Tests](https://img.shields.io/badge/Tests-146%20Passed-4CAF50?style=for-the-badge&logo=checkmarx&logoColor=white)](#-tests--quality-assurance)
-  [![Analyze](https://img.shields.io/badge/Analyze-0%20Issues-00C853?style=for-the-badge)](#-tests--quality-assurance)
-
-  <br/>
-
-  [![Customer Demo Part 1](https://img.shields.io/badge/LinkedIn-Customer_Walkthrough_Part_1-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://lnkd.in/p/dR3N3VdK)
-  [![Customer Demo Part 2](https://img.shields.io/badge/LinkedIn-Customer_Walkthrough_Part_2-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://lnkd.in/p/d_Da_mJV)
-
-  <br/><br/>
-
-  [**🌾 The Problem**](#-the-problem-we-are-solving) •
-  [**💡 The Solution**](#-the-solution-harvesthub) •
-  [**🤖 3 AI Engines**](#-3-core-ai-features-built-for-agriculture) •
-  [**🎬 Video Walkthroughs**](#-live-app-walkthrough-customer-journey) •
-  [**🛠️ Tech Stack**](#️-tech-stack) •
-  [**🧪 Tests**](#-tests--quality-assurance) •
-  [**🚀 Setup**](#-setup--installation-guide)
-
-</div>
+[![Flutter](https://img.shields.io/badge/Flutter-3.24+-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3.6+-0175C2?logo=dart&logoColor=white)](https://dart.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-Spark_Plan-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
+[![Gemini AI](https://img.shields.io/badge/Gemini-Flash_AI-8E75C2?logo=googlegemini&logoColor=white)](https://ai.google.dev)
+[![Tests](https://img.shields.io/badge/Tests-146%20Passed-4CAF50?logo=checkmarx&logoColor=white)](#-tests--quality-assurance)
+[![Analyze](https://img.shields.io/badge/Analyze-0%20Issues-brightgreen)](#-tests--quality-assurance)
+[![Customer Demo Part 1](https://img.shields.io/badge/LinkedIn-Demo_Part_1-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/dR3N3VdK)
+[![Customer Demo Part 2](https://img.shields.io/badge/LinkedIn-Demo_Part_2-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/d_Da_mJV)
 
 ---
 
