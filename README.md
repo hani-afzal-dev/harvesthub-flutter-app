@@ -138,22 +138,10 @@ All AI features follow strict enterprise-grade resilience principles:
 
 ## 🎬 Live App Walkthrough (Customer Journey)
 
-> [!NOTE]
-> **Video Size Notice**: High-definition, full-length application recordings exceed GitHub's native video and file size limits. To provide an uncompressed, comprehensive viewing experience, the full walkthrough recordings are hosted on LinkedIn.
->
-> 📌 *Please Note: Part 1 and Part 2 are dedicated entirely to the **complete Customer Experience & Shopping Journey**. Dedicated video walkthroughs for the **Farmer** (*"Awaaz se Dukaan"*, *"Crop Doctor"*) and **Admin** portals are in preparation and will be added in upcoming updates.*
+> **Note**: Due to GitHub repo file size limits, full HD video walkthroughs showcasing the **Customer Experience** are hosted on LinkedIn *(Farmer & Admin walkthroughs coming soon)*:
 
-| Video Walkthrough | Detailed Content & Features Covered | Link |
-| :--- | :--- | :---: |
-| 📺 **Customer Experience — Part 1** | First half of the complete Customer Journey: exploring the farm-to-table catalog, discovering real-time harvest listings directly from local farmers, search and filtering, viewing harvest freshness details, and adding fresh items. | [**Watch Customer Demo (Part 1) ↗**](https://lnkd.in/p/dR3N3VdK) |
-| 📺 **Customer Experience — Part 2** | Second half of the Customer Journey: utilizing the **"Smart Basket" AI assistant** for natural-language family grocery budgeting (Urdu / English), automated budget-balancing & item clamping, cart management, checkout, and live order tracking. | [**Watch Customer Demo (Part 2) ↗**](https://lnkd.in/p/d_Da_mJV) |
-
-### 💡 Key Highlights in the Customer Walkthrough:
-- **Direct Farm Discovery**: Urban consumers connecting directly with farm listings at fair prices without middleman markups.
-- **"Smart Basket" AI in Action**: Natural language grocery prompts (Urdu / English) converted into budget-optimized shopping baskets with stock clamping.
-- **Budget-Balancing Math**: Automated lower-priority item quantity reduction and dropping logic when exceeding target household budget.
-- **Cart & Order Flow**: Batch adding items to cart, order confirmation, and tracking order updates in real time.
-- *(Upcoming)*: Farmer Dukaan management (*"Awaaz se Dukaan"* voice listings, *"Crop Doctor"* leaf scans) and Admin dashboard walkthroughs.
+- 📺 [**Customer Journey Walkthrough — Part 1**](https://lnkd.in/p/dR3N3VdK): Catalog browsing, fresh harvest discovery, and real-time local farmer listings.
+- 📺 [**Customer Journey Walkthrough — Part 2**](https://lnkd.in/p/d_Da_mJV): "Smart Basket" AI budgeting assistant, automated item clamping, cart checkout, and order tracking.
 
 ---
 
