@@ -1,22 +1,48 @@
-# HarvestHub 🌱🛒
-### *Direct Farm-to-Table Marketplace with On-Device & Cloud AI*
+<div align="center">
 
-[![Flutter](https://img.shields.io/badge/Flutter-3.24+-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
-[![Dart](https://img.shields.io/badge/Dart-3.6+-0175C2?logo=dart&logoColor=white)](https://dart.dev)
-[![Firebase](https://img.shields.io/badge/Firebase-Spark_Plan-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
-[![Gemini](https://img.shields.io/badge/Gemini_AI-Flash_Models-8E75C2?logo=googlegemini&logoColor=white)](https://ai.google.dev)
-[![Tests](https://img.shields.io/badge/Tests-146%20Passed-4CAF50?logo=checkmarx&logoColor=white)](#tests--quality-assurance)
-[![Analyze](https://img.shields.io/badge/Analyze-0%20Issues-brightgreen)](#tests--quality-assurance)
-[![Customer Demo Part 1](https://img.shields.io/badge/LinkedIn-Customer_Demo_Part_1-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/dR3N3VdK)
-[![Customer Demo Part 2](https://img.shields.io/badge/LinkedIn-Customer_Demo_Part_2-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/d_Da_mJV)
+  <img src="assets/images/logo.png" alt="HarvestHub Logo" width="160" />
+
+  # HarvestHub 🌱🛒
+  ### *Direct Farm-to-Table Marketplace with On-Device & Cloud AI*
+
+  **Empowering smallholder farmers with voice AI & protecting family grocery budgets against inflation.**
+
+  <br/>
+
+  [![Flutter](https://img.shields.io/badge/Flutter-3.24+-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
+  [![Dart](https://img.shields.io/badge/Dart-3.6+-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
+  [![Firebase](https://img.shields.io/badge/Firebase-Spark_Plan-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
+  [![Google Gemini](https://img.shields.io/badge/Google_Gemini-Flash_AI-8E75C2?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev)
+  [![Tests](https://img.shields.io/badge/Tests-146%20Passed-4CAF50?style=for-the-badge&logo=checkmarx&logoColor=white)](#-tests--quality-assurance)
+  [![Analyze](https://img.shields.io/badge/Analyze-0%20Issues-00C853?style=for-the-badge)](#-tests--quality-assurance)
+
+  <br/>
+
+  [![Customer Demo Part 1](https://img.shields.io/badge/LinkedIn-Customer_Walkthrough_Part_1-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://lnkd.in/p/dR3N3VdK)
+  [![Customer Demo Part 2](https://img.shields.io/badge/LinkedIn-Customer_Walkthrough_Part_2-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://lnkd.in/p/d_Da_mJV)
+
+  <br/><br/>
+
+  [**🌾 The Problem**](#-the-problem-we-are-solving) •
+  [**💡 The Solution**](#-the-solution-harvesthub) •
+  [**🤖 3 AI Engines**](#-3-core-ai-features-built-for-agriculture) •
+  [**🎬 Video Walkthroughs**](#-live-app-walkthrough-customer-journey) •
+  [**🛠️ Tech Stack**](#️-tech-stack) •
+  [**🧪 Tests**](#-tests--quality-assurance) •
+  [**🚀 Setup**](#-setup--installation-guide)
+
+</div>
 
 ---
 
 ## 👨‍💻 Project Overview & Creator
 
-- **Project**: **HarvestHub 🌱🛒**
-- **Created & Developed By**: **Hani Afzal**
-- **Domain / Track**: **Agriculture (AgriTech, AI & Food Security)**
+| 🏷️ Attribute | 📋 Details |
+| :--- | :--- |
+| **Project Name** | **HarvestHub 🌱🛒** |
+| **Designed & Built By** | **Hani Afzal** |
+| **Domain / Track** | **Agriculture (AgriTech, On-Device & Cloud AI, Food Security)** |
+| **Architecture Standard** | **100% Spark-Compliant** (No Firebase Storage, No Cloud Functions, No Blaze fees) |
 
 ---
 
@@ -39,11 +65,11 @@ Agriculture is the backbone of developing economies like Pakistan, contributing 
 
 ## 💡 The Solution: HarvestHub
 
-**HarvestHub** is a direct farm-to-consumer digital marketplace bridging rural farmers and urban buyers without predatory intermediaries.
+**HarvestHub** is a direct farm-to-consumer digital marketplace bridging rural farmers and urban buyers without predatory intermediaries:
 
-- **Direct Farmer Dukaan**: Farmers publish daily harvests directly from their fields with transparent pricing and scheduled pickup/drop-off slots.
-- **Fair Consumer Pricing**: Customers buy fresh, harvested-that-morning produce at wholesale-adjacent prices.
-- **Spark-Compliant Zero-Cost Architecture**: Built strictly on Flutter, Riverpod, and Firebase's free **Spark Plan** (no Cloud Functions, no Firebase Storage, no Blaze fees), enabling sustainable deployment for grassroot rural initiatives.
+- 🛒 **Direct Farmer Dukaan**: Farmers publish daily harvests directly from their fields with transparent pricing and scheduled pickup/drop-off slots.
+- 💰 **Fair Consumer Pricing**: Customers buy fresh, harvested-that-morning produce at wholesale-adjacent prices.
+- ⚡ **Spark-Compliant Zero-Cost Architecture**: Built strictly on Flutter, Riverpod, and Firebase's free **Spark Plan** (no Cloud Functions, no Firebase Storage, no Blaze fees), enabling sustainable deployment for grassroots rural initiatives.
 
 ---
 
@@ -51,32 +77,9 @@ Agriculture is the backbone of developing economies like Pakistan, contributing 
 
 **HarvestHub** integrates three purpose-driven AI systems designed and developed by **Hani Afzal** using Google's **Gemini Developer API** with zero-cloud-storage image handling and custom offline Dart engines.
 
-```mermaid
-flowchart TD
-    User(["User: Farmer or Customer"]) --> Choice{"Select Action"}
-    
-    %% Feature 1
-    Choice -->|Voice or Text| F1["Feature 1: Awaaz se Dukaan"]
-    F1 --> G1["Gemini Flash Models (3.5 / 3.6 / 2.5)"]
-    G1 --> P1["Dart Validation and Sanity Rules"]
-    P1 --> D1["Structured Listing Draft"]
-    
-    %% Feature 2
-    Choice -->|Leaf Photo| F2["Feature 2: Crop Doctor"]
-    F2 --> IMG["In-Memory Base64 Compression"]
-    IMG --> G2["Gemini Multimodal API"]
-    G2 --> SEC["Dart Safety Filter: Strip Chemicals and Doses"]
-    SEC --> DIAG["Plant Diagnosis and Organic Cultural Steps"]
-    
-    %% Feature 3
-    Choice -->|Household Request| F3["Feature 3: Smart Basket"]
-    F3 --> G3["Gemini Intent Extraction"]
-    F3 -.->|Offline Fallback| FB3["Offline Dart Regex Parser"]
-    G3 --> MATH["Dart Catalog Matching and Stock Clamping"]
-    FB3 --> MATH
-    MATH --> BUD["Budget Reduction and Item Drop Math"]
-    BUD --> CART["Batch Add to Existing Cart"]
-```
+<p align="center">
+  <img src="assets/images/ai_architecture.svg" alt="HarvestHub 3 Core AI Engines Architecture" width="100%" />
+</p>
 
 ---
 
@@ -138,25 +141,29 @@ All AI features follow strict enterprise-grade resilience principles:
 
 ## 🎬 Live App Walkthrough (Customer Journey)
 
-> **Note**: Due to GitHub repo file size limits, full HD video walkthroughs showcasing the **Customer Experience** are hosted on LinkedIn *(Farmer & Admin walkthroughs coming soon)*:
+> [!NOTE]
+> **Video Size Notice**: High-definition, full-length application recordings exceed GitHub's native video file limits. Full HD video demonstrations showcasing the **Customer Experience** are hosted directly on LinkedIn:
 
-- 📺 [**Customer Journey Walkthrough — Part 1**](https://lnkd.in/p/dR3N3VdK): Catalog browsing, fresh harvest discovery, and real-time local farmer listings.
-- 📺 [**Customer Journey Walkthrough — Part 2**](https://lnkd.in/p/d_Da_mJV): "Smart Basket" AI budgeting assistant, automated item clamping, cart checkout, and order tracking.
+- 📺 [**Customer Journey Walkthrough — Part 1 (LinkedIn)**](https://lnkd.in/p/dR3N3VdK)  
+  *Explore live farm catalog, real-time harvest listings, category search, and produce freshness details direct from growers.*
+- 📺 [**Customer Journey Walkthrough — Part 2 (LinkedIn)**](https://lnkd.in/p/d_Da_mJV)  
+  *Explore the **"Smart Basket" AI assistant** with Roman Urdu/English household budgeting, stock clamping, cart batching, and order tracking.*
+
+> 💡 *Note: Dedicated walkthrough videos for the **Farmer** ("Awaaz se Dukaan", "Crop Doctor") and **Admin** portals are in preparation and will be added soon.*
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Framework** | Flutter 3.24+ (Dart 3.6+) |
-| **State Management** | Flutter Riverpod (StateNotifierProvider, AutoDispose) |
-| **Backend & Auth** | Firebase Authentication & Cloud Firestore (Spark Free Plan) |
-| **AI / Machine Learning** | Google Gemini Developer API (Multimodal 3.5-flash-lite / 3.6-flash / 2.5-flash) |
-| **Local Offline Cache** | SQLite encrypted via SQLCipher |
-| **Media Handling** | Image Picker with client-side 80% JPEG compression (no cloud storage) |
-| **Monitoring** | Firebase Crashlytics & Analytics |
-| **Target Platform** | Android (minSdkVersion 21, targetSdkVersion 34) |
+| Layer | Technology | Purpose |
+|---|---|---|
+| **Framework** | Flutter 3.24+ (Dart 3.6+) | Cross-platform mobile client (Android SDK 21–34) |
+| **State Management** | Flutter Riverpod (StateNotifierProvider, AutoDispose) | Reactive state with fine-grained stream listeners |
+| **Backend & Auth** | Firebase Auth & Cloud Firestore | Spark Free Plan (no Cloud Functions, no Blaze bill) |
+| **AI / Machine Learning** | Google Gemini Developer API | Multimodal 3.5-flash-lite / 3.6-flash / 2.5-flash cascade |
+| **Local Offline Cache** | SQLite encrypted via SQLCipher | High security local persistence for offline readiness |
+| **Media Handling** | Image Picker with client-side 80% JPEG compression | Zero-cost in-memory image pipeline |
+| **Monitoring** | Firebase Crashlytics & Analytics | Real-time crash diagnosis and operational observability |
 
 ---
 
@@ -250,7 +257,7 @@ flutter analyze
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/YourRepo/harvesthub.git
+   git clone https://github.com/hani-afzal-dev/harvesthub-flutter-app.git
    cd harvesthub_new
    ```
 
@@ -319,4 +326,3 @@ HarvestHub directly aligns with the **United Nations Sustainable Development Goa
 ## 📜 Release Notes & Changelog
 
 See the full release history and milestone breakdown in [CHANGELOG.md](CHANGELOG.md).
-
