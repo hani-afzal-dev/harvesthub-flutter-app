@@ -7,6 +7,8 @@
 [![Gemini](https://img.shields.io/badge/Gemini_AI-Flash_Models-8E75C2?logo=googlegemini&logoColor=white)](https://ai.google.dev)
 [![Tests](https://img.shields.io/badge/Tests-146%20Passed-4CAF50?logo=checkmarx&logoColor=white)](#tests--quality-assurance)
 [![Analyze](https://img.shields.io/badge/Analyze-0%20Issues-brightgreen)](#tests--quality-assurance)
+[![LinkedIn Demo 1](https://img.shields.io/badge/LinkedIn-Video_Walkthrough_Part_1-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/dR3N3VdK)
+[![LinkedIn Demo 2](https://img.shields.io/badge/LinkedIn-Video_Walkthrough_Part_2-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/d_Da_mJV)
 
 ---
 
@@ -15,6 +17,25 @@
 - **Project**: **HarvestHub 🌱🛒**
 - **Created & Developed By**: **Hani Afzal**
 - **Domain / Track**: **Agriculture (AgriTech, AI & Food Security)**
+
+---
+
+## 🎬 Live App Walkthrough & Video Demonstrations
+
+> [!NOTE]
+> **Video Asset Notice**: High-definition, full-length application demonstrations exceed GitHub's native video and file size limits. To ensure an uncompressed, comprehensive viewing experience showing every feature of **HarvestHub** in action, full live video walkthroughs are hosted on LinkedIn.
+
+| Video Walkthrough | Detailed Content & Features Covered | Link |
+| :--- | :--- | :---: |
+| 📺 **HarvestHub Walkthrough — Part 1** | In-depth demonstration of the **Farmer Experience**, **"Awaaz se Dukaan"** (hands-free voice-to-listing in Urdu and Roman Urdu), instant catalog publishing, and real-time inventory management. | [**Watch Full Demo (Part 1) ↗**](https://lnkd.in/p/dR3N3VdK) |
+| 📺 **HarvestHub Walkthrough — Part 2** | End-to-end showcase of **"Crop Doctor"** (multimodal AI leaf disease diagnosis with safe organic remedies), **"Smart Basket"** (AI budget optimization & household meal planning), consumer ordering, and notification flow. | [**Watch Full Demo (Part 2) ↗**](https://lnkd.in/p/d_Da_mJV) |
+
+### 💡 Highlights of the App Walkthrough:
+- **End-to-End User Journeys**: Demonstrates seamless real-time interactions across Farmer, Customer, and Admin modules.
+- **Multilingual Voice AI**: Farmers listing crops hands-free via spoken Urdu / Roman Urdu without typing.
+- **Multimodal Plant Pathology**: Live leaf disease scanning with offline chemical stripping filters and non-plant detection.
+- **Smart Budget Planning**: Natural language grocery requests parsed with strict client-side stock clamping and budget reduction math.
+- **Zero-Cloud-Storage Architecture**: Demonstrating how all media processing runs safely on-device and within Firebase's free Spark plan.
 
 ---
 
@@ -298,6 +319,10 @@ HarvestHub directly aligns with the **United Nations Sustainable Development Goa
 ## 👨‍💻 Project Author
 
 **HarvestHub is designed, architected, and built with ❤️ by Hani Afzal.**
+
+*Watch the complete application walkthrough and connect on LinkedIn:*
+- 📺 [**LinkedIn Video Walkthrough (Part 1)**](https://lnkd.in/p/dR3N3VdK)
+- 📺 [**LinkedIn Video Walkthrough (Part 2)**](https://lnkd.in/p/d_Da_mJV)
 
 ---
 
