@@ -53,29 +53,29 @@ Agriculture is the backbone of developing economies like Pakistan, contributing 
 
 ```mermaid
 flowchart TD
-    User([User: Farmer or Customer]) --> Choice{Select Action}
+    User(["User: Farmer or Customer"]) --> Choice{"Select Action"}
     
     %% Feature 1
-    Choice -->|Voice / Text| F1[Feature 1: Awaaz se Dukaan]
-    F1 --> G1[Gemini 3.5/3.6/2.5 API]
-    G1 --> P1[Dart Validation & Sanity Rules]
-    P1 --> D1[Structured Listing Draft]
+    Choice -->|Voice or Text| F1["Feature 1: Awaaz se Dukaan"]
+    F1 --> G1["Gemini Flash Models (3.5 / 3.6 / 2.5)"]
+    G1 --> P1["Dart Validation and Sanity Rules"]
+    P1 --> D1["Structured Listing Draft"]
     
     %% Feature 2
-    Choice -->|Leaf Photo| F2[Feature 2: Crop Doctor]
-    F2 --> IMG[In-Memory Base64 Compression]
-    IMG --> G2[Gemini Multimodal API]
-    G2 --> SEC[Dart Safety Filter: Strip Chemicals & Doses]
-    SEC --> DIAG[Plant Diagnosis & Organic Cultural Steps]
+    Choice -->|Leaf Photo| F2["Feature 2: Crop Doctor"]
+    F2 --> IMG["In-Memory Base64 Compression"]
+    IMG --> G2["Gemini Multimodal API"]
+    G2 --> SEC["Dart Safety Filter: Strip Chemicals and Doses"]
+    SEC --> DIAG["Plant Diagnosis and Organic Cultural Steps"]
     
     %% Feature 3
-    Choice -->|Household Request| F3[Feature 3: Smart Basket]
-    F3 --> G3[Gemini Intent Extraction]
-    F3 -.->|Offline / Fallback| FB3[Offline Dart Regex Parser]
-    G3 --> MATH[Dart Catalog Matching & Stock Clamping]
+    Choice -->|Household Request| F3["Feature 3: Smart Basket"]
+    F3 --> G3["Gemini Intent Extraction"]
+    F3 -.->|Offline Fallback| FB3["Offline Dart Regex Parser"]
+    G3 --> MATH["Dart Catalog Matching and Stock Clamping"]
     FB3 --> MATH
-    MATH --> BUD[Budget Reduction & Item Drop Math]
-    BUD --> CART[Batch Add to Existing Cart]
+    MATH --> BUD["Budget Reduction and Item Drop Math"]
+    BUD --> CART["Batch Add to Existing Cart"]
 ```
 
 ---
