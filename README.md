@@ -311,3 +311,10 @@ HarvestHub directly aligns with the **United Nations Sustainable Development Goa
 - **Hani Afzal**
 - **Rida Rahima**
 - **Ummema Abdul Hayee**
+
+---
+
+## 📜 Release Notes & Changelog
+
+See the full release history and milestone breakdown in [CHANGELOG.md](CHANGELOG.md).
+
