@@ -7,8 +7,8 @@
 [![Gemini](https://img.shields.io/badge/Gemini_AI-Flash_Models-8E75C2?logo=googlegemini&logoColor=white)](https://ai.google.dev)
 [![Tests](https://img.shields.io/badge/Tests-146%20Passed-4CAF50?logo=checkmarx&logoColor=white)](#tests--quality-assurance)
 [![Analyze](https://img.shields.io/badge/Analyze-0%20Issues-brightgreen)](#tests--quality-assurance)
-[![LinkedIn Demo 1](https://img.shields.io/badge/LinkedIn-Video_Walkthrough_Part_1-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/dR3N3VdK)
-[![LinkedIn Demo 2](https://img.shields.io/badge/LinkedIn-Video_Walkthrough_Part_2-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/d_Da_mJV)
+[![Customer Demo Part 1](https://img.shields.io/badge/LinkedIn-Customer_Demo_Part_1-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/dR3N3VdK)
+[![Customer Demo Part 2](https://img.shields.io/badge/LinkedIn-Customer_Demo_Part_2-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/d_Da_mJV)
 
 ---
 
@@ -17,25 +17,6 @@
 - **Project**: **HarvestHub 🌱🛒**
 - **Created & Developed By**: **Hani Afzal**
 - **Domain / Track**: **Agriculture (AgriTech, AI & Food Security)**
-
----
-
-## 🎬 Live App Walkthrough & Video Demonstrations
-
-> [!NOTE]
-> **Video Asset Notice**: High-definition, full-length application demonstrations exceed GitHub's native video and file size limits. To ensure an uncompressed, comprehensive viewing experience showing every feature of **HarvestHub** in action, full live video walkthroughs are hosted on LinkedIn.
-
-| Video Walkthrough | Detailed Content & Features Covered | Link |
-| :--- | :--- | :---: |
-| 📺 **HarvestHub Walkthrough — Part 1** | In-depth demonstration of the **Farmer Experience**, **"Awaaz se Dukaan"** (hands-free voice-to-listing in Urdu and Roman Urdu), instant catalog publishing, and real-time inventory management. | [**Watch Full Demo (Part 1) ↗**](https://lnkd.in/p/dR3N3VdK) |
-| 📺 **HarvestHub Walkthrough — Part 2** | End-to-end showcase of **"Crop Doctor"** (multimodal AI leaf disease diagnosis with safe organic remedies), **"Smart Basket"** (AI budget optimization & household meal planning), consumer ordering, and notification flow. | [**Watch Full Demo (Part 2) ↗**](https://lnkd.in/p/d_Da_mJV) |
-
-### 💡 Highlights of the App Walkthrough:
-- **End-to-End User Journeys**: Demonstrates seamless real-time interactions across Farmer, Customer, and Admin modules.
-- **Multilingual Voice AI**: Farmers listing crops hands-free via spoken Urdu / Roman Urdu without typing.
-- **Multimodal Plant Pathology**: Live leaf disease scanning with offline chemical stripping filters and non-plant detection.
-- **Smart Budget Planning**: Natural language grocery requests parsed with strict client-side stock clamping and budget reduction math.
-- **Zero-Cloud-Storage Architecture**: Demonstrating how all media processing runs safely on-device and within Firebase's free Spark plan.
 
 ---
 
@@ -152,6 +133,27 @@ All AI features follow strict enterprise-grade resilience principles:
 - **12-Second Network Timeout**: Guaranteed no hanging screens or infinite loading indicators.
 - **Smart Retries**: Automatic 1-second retry on server errors (500/503), with zero retry on 429 quota exhaustion to preserve quota.
 - **Zero PII Exposure**: No user names, phone numbers, addresses, emails, or IDs are ever sent to Gemini. Only the prompt text or leaf pixels are transmitted.
+
+---
+
+## 🎬 Live App Walkthrough (Customer Journey)
+
+> [!NOTE]
+> **Video Size Notice**: High-definition, full-length application recordings exceed GitHub's native video and file size limits. To provide an uncompressed, comprehensive viewing experience, the full walkthrough recordings are hosted on LinkedIn.
+>
+> 📌 *Please Note: Part 1 and Part 2 are dedicated entirely to the **complete Customer Experience & Shopping Journey**. Dedicated video walkthroughs for the **Farmer** (*"Awaaz se Dukaan"*, *"Crop Doctor"*) and **Admin** portals are in preparation and will be added in upcoming updates.*
+
+| Video Walkthrough | Detailed Content & Features Covered | Link |
+| :--- | :--- | :---: |
+| 📺 **Customer Experience — Part 1** | First half of the complete Customer Journey: exploring the farm-to-table catalog, discovering real-time harvest listings directly from local farmers, search and filtering, viewing harvest freshness details, and adding fresh items. | [**Watch Customer Demo (Part 1) ↗**](https://lnkd.in/p/dR3N3VdK) |
+| 📺 **Customer Experience — Part 2** | Second half of the Customer Journey: utilizing the **"Smart Basket" AI assistant** for natural-language family grocery budgeting (Urdu / English), automated budget-balancing & item clamping, cart management, checkout, and live order tracking. | [**Watch Customer Demo (Part 2) ↗**](https://lnkd.in/p/d_Da_mJV) |
+
+### 💡 Key Highlights in the Customer Walkthrough:
+- **Direct Farm Discovery**: Urban consumers connecting directly with farm listings at fair prices without middleman markups.
+- **"Smart Basket" AI in Action**: Natural language grocery prompts (Urdu / English) converted into budget-optimized shopping baskets with stock clamping.
+- **Budget-Balancing Math**: Automated lower-priority item quantity reduction and dropping logic when exceeding target household budget.
+- **Cart & Order Flow**: Batch adding items to cart, order confirmation, and tracking order updates in real time.
+- *(Upcoming)*: Farmer Dukaan management (*"Awaaz se Dukaan"* voice listings, *"Crop Doctor"* leaf scans) and Admin dashboard walkthroughs.
 
 ---
 
@@ -320,9 +322,9 @@ HarvestHub directly aligns with the **United Nations Sustainable Development Goa
 
 **HarvestHub is designed, architected, and built with ❤️ by Hani Afzal.**
 
-*Watch the complete application walkthrough and connect on LinkedIn:*
-- 📺 [**LinkedIn Video Walkthrough (Part 1)**](https://lnkd.in/p/dR3N3VdK)
-- 📺 [**LinkedIn Video Walkthrough (Part 2)**](https://lnkd.in/p/d_Da_mJV)
+*Watch the customer journey video walkthroughs on LinkedIn:*
+- 📺 [**Customer Journey Walkthrough (Part 1)**](https://lnkd.in/p/dR3N3VdK)
+- 📺 [**Customer Journey Walkthrough (Part 2)**](https://lnkd.in/p/d_Da_mJV)
 
 ---
 
